@@ -1,7 +1,7 @@
 {
   "name": "ab_dropdown",
   "version": "1.0.0",
-  "description": "customizable dropdown",
+  "description": "customizable dropdown list",
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --mode development --hot",
