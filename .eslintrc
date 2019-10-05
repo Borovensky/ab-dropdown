@@ -1,0 +1,38 @@
+{
+  "env": {
+    "browser": true,
+    "node": true
+  },
+
+  "parser": "babel-eslint",
+
+  "extends": ["airbnb", "airbnb/hooks"],
+
+  "rules": {
+    "import/no-cycle": "off",
+    "react/sort-comp": "off",
+    "react/jsx-props-no-spreading": "off",
+    "react/static-property-placement": "off",
+    "react/forbid-prop-types": "off",
+    "object-curly-newline": ["error", {
+      "ImportDeclaration": "never"
+    }],
+    "react/prop-types": [
+      "error",
+      {
+        "ignore": [
+          "children"
+        ]
+      }
+    ]
+  },
+
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "paths": ["src"],
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
+    }
+  }
+}
