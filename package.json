@@ -1,8 +1,8 @@
 {
   "name": "ab-dropdown-react",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "customizable dropdown list",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "start": "webpack-dev-server --mode development --hot",
     "build": "webpack --mode production"
