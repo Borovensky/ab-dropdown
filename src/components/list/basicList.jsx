@@ -6,10 +6,10 @@ import './styles.sass';
 const BasicList = ({ className, source, listItemRenderer }) => (
   <div className={classNamesUtil('ab_list', className)}>
     <ul className="ab_list__items">
-      {source.map((item) => (
+      {source.map((item, index) => (
         <li
           className="ab_list__item"
-          key={item.key}
+          key={item.key || index}
         >
           {listItemRenderer(item)}
         </li>

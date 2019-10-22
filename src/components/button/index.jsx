@@ -10,12 +10,14 @@ export default class Button extends Component {
   static defaultProps = {
     autoFocus: false,
     className: null,
+    disabled: false,
     style: null,
   }
 
   static propTypes = {
     autoFocus: bool,
     className: string,
+    disabled: bool,
     id: string.isRequired,
     onClick: func.isRequired,
     style: object,
@@ -39,13 +41,14 @@ export default class Button extends Component {
   /* rendering ------------------------------------------------------------------ */
 
   render() {
-    const { children, autoFocus, id, className, style } = this.props;
+    const { children, autoFocus, id, className, style, disabled } = this.props;
 
     return (
       <button
         // eslint-disable-next-line jsx-a11y/no-autofocus
         autoFocus={autoFocus}
         onClick={this.onClick}
+        disabled={!!disabled}
         id={id}
         className={classNamesUtil('button', className)}
         type="button"

@@ -15,6 +15,7 @@ export default class Entity extends Component {
   static defaultProps = {
     autoFocus: false,
     classNames: { dropdown: null, trigger: null },
+    disabled: false,
     label: null,
     labelRenderer: () => null,
     styles: { dropdown: null, trigger: null },
@@ -27,6 +28,7 @@ export default class Entity extends Component {
       dropdown: string,
       trigger: string,
     }),
+    disabled: bool,
     label: node,
     labelRenderer: func,
     listItemRender: func.isRequired,
@@ -73,7 +75,7 @@ export default class Entity extends Component {
 
   render() {
     const { label, triggerIcon, autoFocus, classNames, styles, source,
-      listItemRender, labelRenderer } = this.props;
+      listItemRender, labelRenderer, disabled } = this.props;
     const { isExpanded, value } = this.state;
 
     return (
@@ -81,6 +83,7 @@ export default class Entity extends Component {
         <Button
           autoFocus={autoFocus}
           className={classNames.trigger}
+          disabled={disabled}
           id={this.uuid}
           onClick={this.onClick}
           style={styles.trigger}
@@ -109,6 +112,7 @@ export default class Entity extends Component {
           style={styles.dropdown}
         >
           <List
+            activeItem={value}
             isInteractive
             source={source}
             listItemRenderer={listItemRender}
