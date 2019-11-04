@@ -5,6 +5,7 @@
   list-style: none
   margin: 0
   padding: 0
+  
 
 .ab-list-interactive
   position: relative
@@ -12,9 +13,13 @@
 
 .ab_list--interactive__item
   cursor: pointer
+  outline: none
 
   &[data-active=true]
     background: $middle-gray-color
 
-  &:hover:not([data-active=true])
+  &[data-hover=true]
     background: $light-gray-color
+
+  // &:hover:not([data-active=true])
+  //   background: $light-gray-color

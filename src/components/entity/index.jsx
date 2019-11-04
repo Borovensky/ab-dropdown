@@ -108,15 +108,16 @@ export default class Entity extends Component {
         <Dropdown
           className={classNames.dropdown}
           isExpanded={isExpanded}
-          triggerId={this.uuid}
           style={styles.dropdown}
+          triggerId={this.uuid}
         >
           <List
             activeItem={value}
             isInteractive
-            source={source}
             listItemRenderer={listItemRender}
             onItemSelection={this.onItemSelection}
+            source={source}
+            focusTarget={this.uuid}
           />
         </Dropdown>
       </span>

@@ -1,3 +1,4 @@
+import autobind from 'autobind-decorator';
 import classNamesUtil from 'ab-class-names';
 import List from 'components/list';
 import React, { cloneElement, Component } from 'react';
@@ -10,11 +11,13 @@ export default class InteractiveList extends Component {
   static defaultProps = {
     activeItem: null,
     className: null,
+    focusTarget: null,
   }
 
   static propTypes = {
     activeItem: object,
     className: string,
+    focusTarget: string,
     listItemRenderer: func.isRequired,
     onItemSelection: func.isRequired,
     source: array.isRequired,
@@ -25,22 +28,72 @@ export default class InteractiveList extends Component {
     super(props, context);
     const { activeItem, source } = this.props;
     this.state = {
-      hoveredItem: activeItem,
+      hoveredItem: activeItem || source[0],
       sortedSource: source,
     };
   }
 
   componentDidMount() {
+    const { focusTarget } = this.props;
     const { hoveredItem } = this.state;
 
-    this.scrollToItem(hoveredItem);
+    if (focusTarget) {
+      document.getElementById(focusTarget)
+        .addEventListener('keydown', this.onKeyDown);
+    }
+
+    this.scrollToItem(hoveredItem, true);
   }
 
+  componentWillUnmount() {
+    const { focusTarget } = this.props;
+
+    if (focusTarget) {
+      document.getElementById(focusTarget)
+        .removeEventListener('keydown', this.onKeyDown);
+    }
+  }
   /* callbacks ------------------------------------------------------------------ */
+
+  @autobind
+  onKeyDown(event) {
+    const [DOWN, UP] = [1, -1];
+    const { onItemSelection } = this.props;
+    const { hoveredItem } = this.state;
+
+    if (event.keyCode === 13) {
+      event.preventDefault();
+      onItemSelection(hoveredItem);
+    }
+
+    switch (event.keyCode) {
+      case 38: // up arrow
+        event.preventDefault();
+        this.focusNextItem(UP);
+        break;
+
+      case 40: // down arrow
+        event.preventDefault();
+        this.focusNextItem(DOWN);
+        break;
+
+      default:
+    }
+  }
 
   /* utils ---------------------------------------------------------------------- */
 
-  scrollToItem(item) {
+  focusNextItem(direction) {
+    const { hoveredItem, sortedSource } = this.state;
+
+    let nextIndex = sortedSource.indexOf(hoveredItem) + direction;
+    nextIndex = ((nextIndex % sortedSource.length) + sortedSource.length) % sortedSource.length;
+
+    this.setState({ hoveredItem: sortedSource[nextIndex] });
+    this.scrollToItem(sortedSource[nextIndex]);
+  }
+
+  scrollToItem(item, centered) {
     const { sortedSource } = this.state;
     const index = sortedSource.indexOf(item);
     const node = this.listNode.querySelectorAll('[data-menuitem]')[index];
@@ -59,13 +112,19 @@ export default class InteractiveList extends Component {
       top: node.offsetTop,
     };
 
-    if (itemParams.bottom > dropdownParams.visibleTop) {
-      this.listNode.scrollTop = itemParams.bottom - dropdownParams.height;
-    }
-    if (itemParams.top < dropdownParams.scroll) {
-      this.listNode.scrollTop = item.equals(sortedSource.first())
-        ? itemParams.bottom - dropdownParams.height
-        : itemParams.top;
+    if (centered) {
+      this.listNode.scrollTop = itemParams.top
+        - (dropdownParams.height / 2)
+        + (itemParams.height / 2);
+    } else {
+      if (itemParams.bottom > dropdownParams.visibleTop) {
+        this.listNode.scrollTop = itemParams.bottom - dropdownParams.height;
+      }
+      if (itemParams.top < dropdownParams.scroll) {
+        this.listNode.scrollTop = Object.is(item, sortedSource[0])
+          ? itemParams.bottom - dropdownParams.height
+          : itemParams.top;
+      }
     }
   }
 
@@ -73,6 +132,7 @@ export default class InteractiveList extends Component {
 
   renderItem(item) {
     const { activeItem, listItemRenderer, onItemSelection } = this.props;
+    const { hoveredItem } = this.state;
     const renderedItem = listItemRenderer(item);
 
     return (cloneElement(
@@ -84,8 +144,11 @@ export default class InteractiveList extends Component {
           renderedItem.props.className,
         ),
         'data-active': Object.is(activeItem, item),
+        'data-hover': Object.is(item, hoveredItem),
         'data-menuitem': true,
         onClick: (event) => onItemSelection(item, event),
+        onMouseEnter: () => this.setState({ hoveredItem: item }),
+        tabIndex: -1,
       },
     ));
   }
