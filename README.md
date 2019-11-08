@@ -44,9 +44,9 @@ render() {
       </tr>
       <tr>
         <td>listItemRender</td>
-        <td>array</td>
+        <td>function</td>
         <td></td>
-        <td>List what you want to display. It should be an array of objects.</td>
+        <td>```js listItemRender: (item) => <div>{item[Object.keys(item)[0]]}</div> ```</td>
       </tr>
     </tbody>
 </table>
