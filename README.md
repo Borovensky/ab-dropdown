@@ -45,8 +45,8 @@ render() {
       <tr>
         <td>listItemRender</td>
         <td>function</td>
+        <td> listItemRender: (item) => <div>{item[Object.keys(item)[0]]}</div> </td>
         <td></td>
-        <td>```js listItemRender: (item) => <div>{item[Object.keys(item)[0]]}</div> ```</td>
       </tr>
     </tbody>
 </table>
