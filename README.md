@@ -29,18 +29,24 @@ render() {
 <table class="table table-bordered table-striped">
     <thead>
     <tr>
-        <th style="width: 100px;">name</th>
-        <th style="width: 50px;">type</th>
-        <th style="width: 50px;">default</th>
+        <th>name</th>
+        <th>type</th>
+        <th>default</th>
         <th>description</th>
     </tr>
     </thead>
     <tbody>
       <tr>
-        <td>a</td>
-        <td>b</td>
-        <td>c</td>
-        <td>d</td>
+        <td>source</td>
+        <td>array</td>
+        <td></td>
+        <td>List what you want to display. It should be an array of objects.</td>
+      </tr>
+      <tr>
+        <td>listItemRender</td>
+        <td>array</td>
+        <td></td>
+        <td>List what you want to display. It should be an array of objects.</td>
       </tr>
     </tbody>
 </table>

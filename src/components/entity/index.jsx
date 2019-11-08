@@ -18,6 +18,7 @@ export default class Entity extends Component {
     disabled: false,
     label: null,
     labelRenderer: () => null,
+    listItemRender: (item) => <div>{item[Object.keys(item)[0]]}</div>,
     onChange: () => null,
     styles: { dropdown: null, trigger: null },
     triggerIcon: true,
@@ -32,7 +33,7 @@ export default class Entity extends Component {
     disabled: bool,
     label: node,
     labelRenderer: func,
-    listItemRender: func.isRequired,
+    listItemRender: func,
     onChange: func,
     styles: shape({
       dropdown: object,

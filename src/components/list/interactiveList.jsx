@@ -135,8 +135,6 @@ export default class InteractiveList extends Component {
     const { hoveredItem } = this.state;
     const renderedItem = listItemRenderer(item);
 
-    // if (!renderedItem) return null;
-
     return (cloneElement(
       renderedItem,
       {
