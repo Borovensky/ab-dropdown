@@ -42,7 +42,7 @@
     "webpack-dev-server": "^3.8.2"
   },
   "dependencies": {
-    "ab-class-names": "^1.0.4",
+    "ab-class-names": "^1.0.5",
     "autobind-decorator": "^2.4.0",
     "prop-types": "^15.7.2",
     "react": "^16.10.2",
