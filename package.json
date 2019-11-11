@@ -4,7 +4,7 @@
   "description": "customizable dropdown list",
   "main": "dist/index.js",
   "scripts": {
-    "start": "webpack-dev-server --mode development --hot",
+    "start": "webpack-dev-server --config webpack.dev.babel.js --mode development --hot",
     "build": "webpack --mode production"
   },
   "keywords": [
