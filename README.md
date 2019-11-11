@@ -2,7 +2,7 @@
 react dropdown component
 
 ## Screenshot
-- wip -
+ - wip -
 
 ## Usage
 
