@@ -62,9 +62,9 @@ render() {
       </tr>
       <tr>
         <td>value</td>
-        <td>function</td>
-        <td>!!!WIP!!!</td>
-        <td>!!!WIP!!!</td>
+        <td>object</td>
+        <td>null</td>
+        <td>dynamically set the value for the trigger. Note that the object that you want to pass via this prop you should take from the SOURCE array. Example: SOURCE.find((i) => i.name === value.name)</td>
       </tr>
       <tr>
         <td>onChange</td>

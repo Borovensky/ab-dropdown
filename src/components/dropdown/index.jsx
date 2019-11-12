@@ -1,7 +1,8 @@
+import autobind from 'autobind-decorator';
 import classNamesUtil from 'ab-class-names';
 import React, { Component } from 'react';
 import { createPortal } from 'react-dom';
-import { string, bool, object } from 'prop-types';
+import { string, bool, object, func } from 'prop-types';
 import './styles.sass';
 
 export default class Dropdown extends Component {
@@ -16,6 +17,7 @@ export default class Dropdown extends Component {
   static propTypes = {
     className: string,
     isExpanded: bool,
+    onClose: func.isRequired,
     style: object,
     triggerId: string.isRequired,
   }
@@ -29,6 +31,8 @@ export default class Dropdown extends Component {
   componentDidMount() {
     const { triggerId } = this.props;
     this.triggerNode = document.getElementById(triggerId);
+
+    this.triggerNode.addEventListener('focusout', this.onFocusOut);
   }
 
   // eslint-disable-next-line camelcase
@@ -42,6 +46,18 @@ export default class Dropdown extends Component {
     }
   }
   /* callbacks ------------------------------------------------------------------ */
+
+  @autobind
+  onFocusOut(event) {
+    const { isExpanded, onClose } = this.props;
+
+    if (!isExpanded
+        || (this.dropdownNode && this.dropdownNode.contains(event.relatedTarget))) {
+      return;
+    }
+
+    onClose();
+  }
 
   /* utils ---------------------------------------------------------------------- */
 

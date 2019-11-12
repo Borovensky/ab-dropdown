@@ -27,6 +27,7 @@ export default class InteractiveList extends Component {
   constructor(props, context) {
     super(props, context);
     const { activeItem, source } = this.props;
+
     this.state = {
       hoveredItem: activeItem || source[0],
       sortedSource: source,
