@@ -2,7 +2,7 @@
 react dropdown component
 
 ## Screenshot
-wip -
+![](https://p63.f2.n0.cdn.getcloudapp.com/items/geuYKDyN/Screenshot+2019-11-12+at+23.22.32.png?v=53f61c98b9bb20e1024241fa30207dca)
 
 ## Usage
 
@@ -45,7 +45,7 @@ render() {
       <tr>
         <td>listItemRender</td>
         <td>function</td>
-        <td>listItemRender: (item) => {item[Object.keys(item)[0]]}</td>
+        <td>listItemRender: (item) => <div>{item[Object.keys(item)[0]]}</div></td>
         <td>Define and customize what parameter(s) (list items) you want to display in dropdown list. By default will be displayed the first value in the object of the array that you pass via source prop.</td>
       </tr>
       <tr>
@@ -94,6 +94,12 @@ render() {
         <td>shape. shape({ dropdown: object, trigger: object })</td>
         <td>styles: { dropdown: null, trigger: null },</td>
         <td>Specify styles for the trigger button and dropdown list.</td>
+      </tr>
+      <tr>
+        <td>autoFocus</td>
+        <td>boolean</td>
+        <td>false</td>
+        <td></td>
       </tr>
     </tbody>
 </table>

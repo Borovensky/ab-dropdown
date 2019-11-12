@@ -105,7 +105,7 @@ export default class Entity extends Component {
             {
               !value
                 ? label || this.onItemSelection(source[0])
-                : labelRenderer(value)
+                : labelRenderer(value) || label
             }
           </span>
           {triggerIcon ? <Icon name="arrow-down" /> : null}
