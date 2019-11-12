@@ -70,13 +70,30 @@ render() {
         <td>onChange</td>
         <td>function</td>
         <td>onChange: () => null</td>
-        <td>Called when you change the value</td>
+        <td>Called when you change the value.</td>
       </tr>
       <tr>
         <td>disabled</td>
         <td>boolean</td>
         <td>false</td>
-        <td>Disabled trigger button</td>
+        <td>Disabled trigger button.</td>
+      </tr>
+      <tr>
+        <td>triggerIcon</td>
+        <td>boolean</td>
+        <td>true</td>
+        <td>Displayed the arrow icon on the trigger button.</td>
+      </tr>
+        <td>classNames</td>
+        <td>shape. shape({ dropdown: string, trigger: string })</td>
+        <td>classNames: { dropdown: null, trigger: null },</td>
+        <td>Specify the class names for the trigger button and dropdown list.</td>
+      </tr>
+      <tr>
+        <td>styles</td>
+        <td>shape. shape({ dropdown: object, trigger: object })</td>
+        <td>styles: { dropdown: null, trigger: null },</td>
+        <td>Specify styles for the trigger button and dropdown list.</td>
       </tr>
     </tbody>
 </table>
