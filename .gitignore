@@ -4,8 +4,7 @@
 .pnp.js
 
 # dev env
-/src/index.html
-/src/component.jsx
+/src/develop_stuff
 webpack.dev.babel.js
 
 # production
