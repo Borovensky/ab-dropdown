@@ -2,7 +2,7 @@
 react dropdown component
 
 ## Usage
-### simple example
+### example 1
 ```js
 import Dropdown from 'ab-dropdown-react';
 
@@ -34,6 +34,67 @@ export default class Example1 extends Component {
 }
 ```
 ![](https://p63.f2.n0.cdn.getcloudapp.com/items/geuYKDyN/Screenshot+2019-11-12+at+23.22.32.png?v=53f61c98b9bb20e1024241fa30207dca)
+
+### example 2
+```js
+import Dropdown from 'ab-dropdown-react';
+import EntityAvatar from './entityAvatar';
+import './styles.sass';
+
+const SOURCE = [
+  { id: '5383130f646', name: 'Artem', lastName: 'Sherman', img: null },
+  { id: '5d4988fff91', name: 'Xavier', lastName: 'Suire', img: null },
+  /*.........*/
+];
+
+export default class Example2 extends Component {
+  constructor(props, context) {
+    super(props, context);
+    const { user } = props;
+
+    this.state = {
+      value: user, // { id: '53835603646', name: 'Stephen', lastName: 'Leguillon', img: null },
+    };
+  }
+
+  onChange = (item) => {
+    // do what you need
+  }
+
+  listItemRender = (item) => (
+    <span className="list_item">
+      <EntityAvatar {...item} />
+      <span>{item.name}</span>
+      <span style={{ marginLeft: '5px' }}>{item.lastName}</span>
+    </span>
+  );
+
+  render() {
+    const { value } = this.state;
+
+    return (
+      <Dropdown
+        label="Select"
+        classNames={{
+          dropdown: 'custom-db',
+          trigger: 'custom-tg',
+        }}
+        styles={{
+          dropdown: { minWidth: '200px' },
+          trigger: { minWidth: '200px' },
+        }}
+        disabled={!SOURCE}
+        onChange={(item) => this.onChange(item)}
+        source={SOURCE}
+        labelRenderer={(item) => `${item.name} ${item.lastName}`}
+        listItemRender={this.listItemRender}
+        value={SOURCE.find((i) => i.name === value.name)}
+      />
+    );
+  }
+}
+```
+![](https://p63.f2.n0.cdn.getcloudapp.com/items/NQuenryw/Screenshot+2019-11-13+at+17.34.39.png?v=67274b61c337de699a8cceb350355544)
 
 ## API
 ### props
