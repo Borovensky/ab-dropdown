@@ -3,6 +3,10 @@
 /.pnp
 .pnp.js
 
+# dev env
+/src/develop_stuff
+webpack.dev.babel.js
+
 # production
 /build
 

@@ -22,6 +22,7 @@ export default class Entity extends Component {
     onChange: () => null,
     styles: { dropdown: null, trigger: null },
     triggerIcon: true,
+    value: null,
   }
 
   static propTypes = {
@@ -41,15 +42,18 @@ export default class Entity extends Component {
     }),
     source: array.isRequired,
     triggerIcon: bool,
+    value: object,
   }
 
   /* lifecycle ------------------------------------------------------------------ */
-  constructor() {
-    super();
+  constructor(props, context) {
+    const { value } = props;
+
+    super(props, context);
     this.uuid = uuidv4();
     this.state = {
       isExpanded: false,
-      value: null,
+      value: value || null,
     };
   }
   /* callbacks ------------------------------------------------------------------ */
@@ -101,7 +105,7 @@ export default class Entity extends Component {
             {
               !value
                 ? label || this.onItemSelection(source[0])
-                : labelRenderer(value)
+                : labelRenderer(value) || label
             }
           </span>
           {triggerIcon ? <Icon name="arrow-down" /> : null}
@@ -110,6 +114,9 @@ export default class Entity extends Component {
         <Dropdown
           className={classNames.dropdown}
           isExpanded={isExpanded}
+          onClose={() => {
+            this.setState({ isExpanded: false });
+          }}
           style={styles.dropdown}
           triggerId={this.uuid}
         >
