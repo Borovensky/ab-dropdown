@@ -1,9 +1,12 @@
 # ab_dropdown
 react dropdown component
+
 Why ab_dropdown?
+
 - easy customizable
 - flexible
 - keyboard navigation
+
 Coming soon:
 - search inside dropdown list
 - ability to use immutable data (with Immutable.js library)
