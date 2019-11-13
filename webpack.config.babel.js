@@ -56,6 +56,8 @@ module.exports = {
     minimize: true,
     minimizer: [new TerserPlugin({
       cache: true,
+      parallel: true,
+      sourceMap: false,
     })],
   },
 
@@ -64,7 +66,6 @@ module.exports = {
       components: path.resolve(__dirname, 'src/components'),
       stylesheets: path.resolve(__dirname, 'src/stylesheets'),
       icons: path.resolve(__dirname, 'src/icons'),
-      // utils: path.join(__dirname, '/src/utils'),
     },
     extensions: ['.js', '.jsx', './index.js'],
   },

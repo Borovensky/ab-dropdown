@@ -1,6 +1,6 @@
 {
   "name": "ab-dropdown-react",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "customizable dropdown list",
   "main": "dist/index.js",
   "scripts": {
@@ -12,7 +12,10 @@
     "list",
     "searchablelist"
   ],
-  "author": "Artem Borovensky",
+  "author": {
+    "name": "Artem Borovensky",
+    "email": "borovenskyartem@gmail.com"
+  },
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.6.2",
@@ -20,7 +23,7 @@
     "@babel/plugin-proposal-decorators": "^7.6.0",
     "@babel/preset-env": "^7.6.2",
     "@babel/preset-react": "^7.0.0",
-    "babel-eslint": "^10.0.3",
+    "babel-eslint": "^10.0.3", 
     "babel-loader": "^8.0.6",
     "babel-preset-stage-0": "^6.24.1",
     "css-loader": "^3.2.0",
