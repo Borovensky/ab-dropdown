@@ -52,7 +52,10 @@ export default class Dropdown extends Component {
     const { isExpanded, onClose } = this.props;
 
     if (!isExpanded
-        || (this.dropdownNode && this.dropdownNode.contains(event.relatedTarget))) {
+      || document.activeElement === event.target
+      || event.relatedTarget === this.triggerNode
+      || !this.dropdownNode
+      || (this.dropdownNode && this.dropdownNode.contains(event.relatedTarget))) {
       return;
     }
 

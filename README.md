@@ -1,25 +1,32 @@
 # ab_dropdown
 react dropdown component
 
-## Screenshot
-![](https://p63.f2.n0.cdn.getcloudapp.com/items/geuYKDyN/Screenshot+2019-11-12+at+23.22.32.png?v=53f61c98b9bb20e1024241fa30207dca)
-
 ## Usage
-
+### simple example
+![](https://p63.f2.n0.cdn.getcloudapp.com/items/geuYKDyN/Screenshot+2019-11-12+at+23.22.32.png?v=53f61c98b9bb20e1024241fa30207dca)
+#### code
 ```js
 import Dropdown from 'ab-dropdown-react';
 
-listItemRender = (item) => (
-  <div className="list_item">{item.name}</div>
-);
+export default class Example1 extends Component {
 
-render() {
-  return (
-    <Dropdown 
-      source={SOURCE}
-      listItemRender={this.listItemRender}
-    />
-  );
+  //==========
+
+  onChange = item => {
+    // onChange
+  }
+
+  render() {
+    return (
+      <Dropdown
+        autoFocus
+        label="More"
+        onChange={(item) => this.onChange(item)}
+        source={SOURCE}
+        listItemRender={(item) => <div>{item.label}</div>}
+      />
+    );
+  }
 }
 ```
 
