@@ -3,8 +3,6 @@ react dropdown component
 
 ## Usage
 ### simple example
-![](https://p63.f2.n0.cdn.getcloudapp.com/items/geuYKDyN/Screenshot+2019-11-12+at+23.22.32.png?v=53f61c98b9bb20e1024241fa30207dca)
-#### code
 ```js
 import Dropdown from 'ab-dropdown-react';
 
@@ -29,6 +27,7 @@ export default class Example1 extends Component {
   }
 }
 ```
+![](https://p63.f2.n0.cdn.getcloudapp.com/items/geuYKDyN/Screenshot+2019-11-12+at+23.22.32.png?v=53f61c98b9bb20e1024241fa30207dca)
 
 ## API
 ### props
