@@ -6,6 +6,12 @@ react dropdown component
 ```js
 import Dropdown from 'ab-dropdown-react';
 
+const SOURCE = [
+  { key: 'edit', label: 'Edit' },
+  { key: 'snooze', label: 'Snooze' },
+  { key: 'delete', label: 'Delete' },
+];
+
 export default class Example1 extends Component {
 
   //==========
