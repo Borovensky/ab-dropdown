@@ -13,6 +13,7 @@ export default class Entity extends Component {
   /* static --------------------------------------------------------------------- */
 
   static defaultProps = {
+    dropdownPossition: ['bottom', 'left'],
     autoFocus: false,
     classNames: { dropdown: null, trigger: null },
     disabled: false,
@@ -26,6 +27,7 @@ export default class Entity extends Component {
   }
 
   static propTypes = {
+    dropdownPossition: array,
     autoFocus: bool,
     classNames: shape({
       dropdown: string,
@@ -80,7 +82,7 @@ export default class Entity extends Component {
   /* rendering ------------------------------------------------------------------ */
 
   render() {
-    const { label, triggerIcon, autoFocus, classNames, styles, source,
+    const { dropdownPossition, label, triggerIcon, autoFocus, classNames, styles, source,
       listItemRender, labelRenderer, disabled } = this.props;
     const { isExpanded, value } = this.state;
 
@@ -112,6 +114,8 @@ export default class Entity extends Component {
         </Button>
 
         <Dropdown
+          align={`${dropdownPossition[0] === 'bottom' ? 'top' : 'bottom'} ${dropdownPossition[1]}`}
+          anchor={`${dropdownPossition[0] === 'top' ? 'top' : 'bottom'} ${dropdownPossition[1]}`}
           className={classNames.dropdown}
           isExpanded={isExpanded}
           onClose={() => {

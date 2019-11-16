@@ -3,8 +3,10 @@ import classNamesUtil from 'ab-class-names';
 import React, { Component } from 'react';
 import { createPortal } from 'react-dom';
 import { string, bool, object, func } from 'prop-types';
+import Authority from './authority';
 import './styles.sass';
 
+@Authority
 export default class Dropdown extends Component {
   /* static --------------------------------------------------------------------- */
 
@@ -45,6 +47,12 @@ export default class Dropdown extends Component {
       this.setState({ isExpanded: false });
     }
   }
+
+  componentWillUnmount() {
+    this.triggerNode.removeEventListener('focusout', this.onFocusOut);
+    // this.triggerNode.removeEventListener('keydown', this.onKeyDown);
+  }
+
   /* callbacks ------------------------------------------------------------------ */
 
   @autobind
@@ -73,7 +81,7 @@ export default class Dropdown extends Component {
         aria-hidden={!isExpanded}
         className={classNamesUtil('ab-dropdown', className)}
         ref={(node) => { this.dropdownNode = node; }}
-        // onBlur={this.onFocusOut}
+        onBlur={this.onFocusOut}
         // onKeyDown={this.onKeyDown}
         role="dialog"
         style={style}
