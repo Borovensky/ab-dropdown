@@ -185,5 +185,13 @@ export default class Example2 extends Component {
         <td>false</td>
         <td></td>
       </tr>
+      <tr>
+        <td>dropdownPosition</td>
+        <td>array</td>
+        <td>['bottom', 'left']</td>
+        <td>Define the position of the dropdown list.
+            [0](yAxis) - if 'top' the dropdown will be displayed above the trigger. If 'bottom' the dropdown will be displayed under the trigger.
+            [1](xAxis) - could be 'right' or 'left'. The same principle.</td>
+      </tr>
     </tbody>
 </table>
