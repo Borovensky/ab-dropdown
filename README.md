@@ -175,7 +175,7 @@ export default class Example2 extends Component {
         <td></td>
       </tr>
       <tr>
-        <td>dropdownPossition</td>
+        <td>dropdownPosition</td>
         <td>array</td>
         <td>['bottom', 'left']</td>
         <td>Define the position of the dropdown list.
